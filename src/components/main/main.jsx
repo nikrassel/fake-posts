@@ -1,5 +1,6 @@
 import React from "react"
 import { useDispatch, useSelector } from "react-redux"
+import PostsList from "./postsList/postsList"
 
 const Main = () => {
     const dispatch = useDispatch()
@@ -18,6 +19,7 @@ const Main = () => {
                 >
                     Download posts
                 </button>
+                <PostsList />
             </div>
         </>
     )
