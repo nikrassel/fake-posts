@@ -1,14 +1,14 @@
 const initialState = {
-    posts: null,
+    comments: null,
     isLoading: false
 }
 
-export default function postsReducer(state = initialState, action) {
+export default function commentsReducer(state = initialState, action) {
     switch (action.type) {
-        case "SET_POSTS": {
+        case "SET_COMMENTS": {
             return {
                 ...state,
-                posts: [...action.payload]
+                comments: [...action.payload]
             }
         }
         case "BEGIN_LOADING": {

@@ -24,7 +24,7 @@ const PostsList = () => {
     function handleChange({ value }) {
         setSearch(value)
     }
-    if (posts && posts.length !== 0) {
+    if (posts) {
         let filtredPosts = posts.filter((post) => post !== null)
         if (search) {
             const nameRegExp = new RegExp(`(?:${search.toLowerCase()})`, "g")

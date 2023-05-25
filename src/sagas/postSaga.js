@@ -16,10 +16,9 @@ export function* workerSaga() {
 }
 
 export function* watchPostSaga() {
-    yield takeLeading("LOAD_DATA", workerSaga)
+    yield takeLeading("LOAD_POSTS", workerSaga)
 }
 
 export default function* postSaga() {
-    console.log("Saga ready")
     yield fork(watchPostSaga)
 }
