@@ -4,11 +4,10 @@ import App from "./App"
 import { BrowserRouter } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.css"
 import "bootstrap/dist/js/bootstrap.bundle.min"
-import { createStore } from "./store/createStore"
 import { Provider } from "react-redux"
+import { store } from "./store/createStore"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
-const store = createStore()
 root.render(
     <React.StrictMode>
         <link
