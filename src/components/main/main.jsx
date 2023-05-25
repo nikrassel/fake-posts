@@ -1,9 +1,8 @@
 import React from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import PostsList from "./postsList/postsList"
 
 const Main = () => {
-    const dispatch = useDispatch()
     // function handleDownloadPosts() {
     //     dispatch(loadPostsList())
     // }
@@ -13,12 +12,6 @@ const Main = () => {
         <>
             <h1>Main page</h1>
             <div className="container">
-                <button
-                    className="btn btn-primary"
-                    onClick={() => dispatch({ type: "LOAD_DATA" })}
-                >
-                    Download posts
-                </button>
                 <PostsList />
             </div>
         </>

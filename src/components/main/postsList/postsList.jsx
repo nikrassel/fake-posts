@@ -6,12 +6,14 @@ import TextField from "./textField"
 import Sorting from './sorting';
 import PostTable from './postTable';
 import Pagination from "./Pagination";
+import Loader from '../../ui/loader';
 
 const PostsList = () => {
     const pageSize = 4
     const [currentPage, setCurrentPage] = useState(1)
     const [sortOrder, setSortOrder] = useState("asc")
     const posts = useSelector((state) => state.posts.posts)
+    const loadingStatus = useSelector((state) => state.posts.isLoading)
     const [search, setSearch] = useState("")
     function handlePageChange(pageIndex) {
         setCurrentPage(pageIndex)
@@ -69,6 +71,11 @@ const PostsList = () => {
                 </div>
             </div>
          );
+    }
+    if (loadingStatus) {
+        return (
+            <Loader />
+        )
     }
 }
  

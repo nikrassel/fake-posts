@@ -1,7 +1,6 @@
 const initialState = {
     posts: [],
-    comments: [],
-    user: []
+    isLoading: false
 }
 
 export default function postsReducer(state = initialState, action) {
@@ -9,7 +8,19 @@ export default function postsReducer(state = initialState, action) {
         case "SET_POSTS": {
             return {
                 ...state,
-                posts: [...state.posts, ...action.payload]
+                posts: [...action.payload]
+            }
+        }
+        case "BEGIN_LOADING": {
+            return {
+                ...state,
+                isLoading: true
+            }
+        }
+        case "END_LOADING": {
+            return {
+                ...state,
+                isLoading: false
             }
         }
         default:
