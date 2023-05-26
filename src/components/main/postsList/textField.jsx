@@ -34,11 +34,11 @@ const TextField = ({
                     className={getInputClasses()}
                     placeholder={placeHolder}
                 />
-                <button 
-                    className="btn btn-danger" 
+                <button
+                    className="btn btn-danger"
                     type="button"
                     onClick={handleClear}
-                    >
+                >
                     <i className="bi bi-x-lg"></i>
                 </button>
                 {error && <div className="invalid-feedback">{error}</div>}

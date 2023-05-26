@@ -1,6 +1,7 @@
 import React from "react"
 import { useSelector } from "react-redux"
 import PostsList from "./postsList/postsList"
+import UpperNavBar from "../ui/upperNavBar"
 
 const Main = () => {
     // function handleDownloadPosts() {
@@ -10,8 +11,8 @@ const Main = () => {
     console.log(posts)
     return (
         <>
-            <h1>Main page</h1>
-            <div className="container">
+            <UpperNavBar />
+            <div className="container mt-2">
                 <PostsList />
             </div>
         </>

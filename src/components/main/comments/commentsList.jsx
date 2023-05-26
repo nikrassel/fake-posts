@@ -1,17 +1,19 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import Loader from '../../ui/loader';
+import React from "react"
+import { useSelector } from "react-redux"
+import Loader from "../../ui/loader"
 
 const CommentsList = ({ postId }) => {
     const comments = useSelector((state) => state.comments.comments)
     const loadingStatus = useSelector((state) => state.comments.isLoading)
-    
+
     if (loadingStatus) {
         return <Loader />
     }
     if (comments) {
-        const postComments = comments.filter((comment) => comment.postId === postId)
-        return ( 
+        const postComments = comments.filter(
+            (comment) => comment.postId === postId
+        )
+        return (
             <>
                 {postComments.map((comment) => (
                     <div key={comment.id}>
@@ -20,8 +22,8 @@ const CommentsList = ({ postId }) => {
                     </div>
                 ))}
             </>
-        );
+        )
     }
 }
- 
-export default CommentsList;
+
+export default CommentsList
