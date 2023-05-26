@@ -5,12 +5,15 @@ import postSaga from "../sagas/postSaga"
 import postsReducer from "./posts"
 import commentsReducer from "./comments"
 import commentSaga from "../sagas/commentSaga"
+import usersReducer from "./users"
+import userSaga from "../sagas/userSaga"
 
 const sagaMiddleware = createSagaMiddleware()
 
 const rootReducer = combineReducers({
     posts: postsReducer,
-    comments: commentsReducer
+    comments: commentsReducer,
+    users: usersReducer
 })
 
 export const store = createStore(
@@ -20,3 +23,4 @@ export const store = createStore(
 
 sagaMiddleware.run(postSaga)
 sagaMiddleware.run(commentSaga)
+sagaMiddleware.run(userSaga)
