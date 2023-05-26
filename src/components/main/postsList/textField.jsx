@@ -11,15 +11,15 @@ const TextField = ({
     error,
     placeHolder
 }) => {
-    const [showPassword, setShowPassword] = useState(false)
+    const [showPassword] = useState(false)
     function handleChange({ target }) {
         onChange({ name: target.name, value: target.value })
     }
+    function handleClear() {
+        onChange({ value: "" })
+    }
     function getInputClasses() {
         return "form-control" + (error ? " is-invalid" : "")
-    }
-    function toggleShowPassword() {
-        setShowPassword((prevState) => !prevState)
     }
     return (
         <div className="mb-4">
@@ -34,19 +34,13 @@ const TextField = ({
                     className={getInputClasses()}
                     placeholder={placeHolder}
                 />
-                {type === "password" && (
-                    <button
-                        className="btn btn-outline-secondary"
-                        type="button"
-                        onClick={toggleShowPassword}
+                <button 
+                    className="btn btn-danger" 
+                    type="button"
+                    onClick={handleClear}
                     >
-                        <i
-                            className={
-                                "bi bi-eye" + (showPassword ? "-slash" : "")
-                            }
-                        ></i>
-                    </button>
-                )}
+                    <i className="bi bi-x-lg"></i>
+                </button>
                 {error && <div className="invalid-feedback">{error}</div>}
             </div>
         </div>

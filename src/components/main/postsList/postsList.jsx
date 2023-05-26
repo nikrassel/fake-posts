@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState } from "react"
 import { useSelector } from "react-redux"
 import _ from "lodash"
 import { paginate } from "../../../utils/paginate"
 import TextField from "./textField"
-import Sorting from './sorting';
-import PostTable from './postTable';
-import Pagination from "./Pagination";
-import Loader from '../../ui/loader';
+import Sorting from "./sorting"
+import PostTable from "./postTable"
+import Pagination from "./Pagination"
+import Loader from "../../ui/loader"
 
 const PostsList = () => {
     const pageSize = 4
     const [currentPage, setCurrentPage] = useState(1)
-    const [sortOrder, setSortOrder] = useState("asc")
+    const [sortOrder, setSortOrder] = useState("")
     const posts = useSelector((state) => state.posts.posts)
     const loadingStatus = useSelector((state) => state.posts.isLoading)
     const [search, setSearch] = useState("")
@@ -33,36 +33,30 @@ const PostsList = () => {
             )
         }
         const count = filtredPosts.length
-        const sortedPosts = _.orderBy(
-            filtredPosts,
-            ["title"],
-            [sortOrder]
-        )
+        let sortedPosts = filtredPosts.filter((post) => post !== null)
+        if (sortOrder) {
+            sortedPosts = _.orderBy(filtredPosts, ["title"], [sortOrder])
+        }
         const postCrop = paginate(sortedPosts, currentPage, pageSize)
-        return ( 
-            <div className='container'>
-                <div className='row'>
-                    <Sorting 
-                        sortOrder={handleSort}
-                        selectedOrder={sortOrder}
+        return (
+            <div className="container">
+                <div className="row">
+                    <Sorting sortOrder={handleSort} selectedOrder={sortOrder} />
+                </div>
+                <div className="row">
+                    <TextField
+                        label=""
+                        name="search"
+                        value={search}
+                        placeHolder="Поиск..."
+                        onChange={handleChange}
                     />
                 </div>
-                <div className='row'>
-                        <TextField 
-                            label=""
-                            name="search"
-                            value={search}
-                            placeHolder="Поиск..."
-                            onChange={handleChange}
-                        />
+                <div className="row">
+                    <PostTable posts={postCrop} />
                 </div>
-                <div className='row'>
-                    <PostTable 
-                        posts={postCrop}
-                    />
-                </div>
-                <div className='row'>
-                    <Pagination 
+                <div className="row">
+                    <Pagination
                         itemCount={count}
                         pageSize={pageSize}
                         currentPage={currentPage}
@@ -70,13 +64,11 @@ const PostsList = () => {
                     />
                 </div>
             </div>
-         );
-    }
-    if (loadingStatus) {
-        return (
-            <Loader />
         )
     }
+    if (loadingStatus) {
+        return <Loader />
+    }
 }
- 
-export default PostsList;
+
+export default PostsList

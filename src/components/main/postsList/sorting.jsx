@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react"
 
 const Sorting = ({ sortOrder, selectedOrder }) => {
     function handleChangeOrder() {
@@ -8,21 +8,22 @@ const Sorting = ({ sortOrder, selectedOrder }) => {
             sortOrder("asc")
         }
     }
-    return ( 
+    return (
         <div>
-            <button className='btn btn-primary' onClick={() => handleChangeOrder()}>
+            <button
+                className="btn btn-primary"
+                onClick={() => handleChangeOrder()}
+            >
                 Сортировка по заголовку
                 <i
                     className={
                         "bi bi-caret-" +
-                        (selectedOrder === "asc"
-                            ? "up-fill"
-                            : "down-fill")
+                        (selectedOrder === "asc" ? "up-fill" : "down-fill")
                     }
                 ></i>
             </button>
         </div>
-     );
+    )
 }
- 
-export default Sorting;
+
+export default Sorting

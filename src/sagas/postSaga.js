@@ -9,10 +9,10 @@ async function postsGet() {
 }
 
 export function* workerSaga() {
-    yield put({ type: "BEGIN_LOADING"})
+    yield put({ type: "BEGIN_LOADING" })
     const result = yield call(postsGet)
     yield put({ type: "SET_POSTS", payload: result })
-    yield put({ type: "END_LOADING"})
+    yield put({ type: "END_LOADING" })
 }
 
 export function* watchPostSaga() {
