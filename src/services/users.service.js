@@ -5,7 +5,9 @@ const usersEndpoint = "users?id="
 
 const usersService = {
     get: async () => {
-        const { data } = await httpService.get(usersEndpoint + localStorageService.getUserId())
+        const { data } = await httpService.get(
+            usersEndpoint + localStorageService.getUserId()
+        )
         return data
     }
 }

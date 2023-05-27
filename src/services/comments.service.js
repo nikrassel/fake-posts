@@ -6,7 +6,9 @@ const commentsEndpoint = `comments?postId=`
 
 const commentsService = {
     get: async () => {
-        const { data } = await httpService.get(commentsEndpoint + localStorageService.getPostId())
+        const { data } = await httpService.get(
+            commentsEndpoint + localStorageService.getPostId()
+        )
         return data
     }
 }

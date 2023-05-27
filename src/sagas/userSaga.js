@@ -15,8 +15,10 @@ export function* workerSaga() {
         yield put({ type: "USERS/SET", payload: result })
         yield put({ type: "USERS/END_LOADING" })
     } catch (error) {
-        yield put({ type: "ERROR/SHOW_ALERT", 
-            payload:"Что-то пошло не так, попробуйте обновить страницу" })
+        yield put({
+            type: "ERROR/SHOW_ALERT",
+            payload: "Что-то пошло не так, попробуйте обновить страницу"
+        })
         yield put({ type: "USERS/END_LOADING" })
     }
 }

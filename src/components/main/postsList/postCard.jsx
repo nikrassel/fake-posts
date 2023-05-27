@@ -9,7 +9,7 @@ const PostCard = ({ post }) => {
     const navigate = useNavigate()
     const id = String(post.id)
     function handleShowComments(target) {
-        if(target.target.className.includes("collapsed")) {
+        if (target.target.className.includes("collapsed")) {
             return
         }
         localStorageService.setPostId(id)
@@ -27,13 +27,14 @@ const PostCard = ({ post }) => {
                 <div className="container">
                     <div className="row g-0">
                         <div className="col-6 col-md-4">
-                            <img 
-                                src="/img/logo.jpg" 
-                                alt="" 
-                                width="200px" 
+                            <img
+                                src="/img/logo.jpg"
+                                alt=""
+                                width="200px"
                                 id={post.userId}
                                 type="button"
-                                onClick={handleToUserPage}/>
+                                onClick={handleToUserPage}
+                            />
                         </div>
                         <div className="col-sm-6 col-md-8">
                             <h5 className="card-title">{post.title}</h5>

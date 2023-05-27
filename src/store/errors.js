@@ -8,6 +8,7 @@ export const errorsReducer = (state = initialState, action) => {
             return { alert: action.payload }
         case "ERROR/HIDE_ALERT":
             return { alert: null }
-        default: return state
+        default:
+            return state
     }
 }
