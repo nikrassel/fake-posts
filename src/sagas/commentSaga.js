@@ -9,10 +9,17 @@ async function commentsGet() {
 }
 
 export function* workerSaga() {
-    yield put({ type: "COMMENTS/BEGIN_LOADING" })
-    const result = yield call(commentsGet)
-    yield put({ type: "COMMENTS/SET", payload: result })
-    yield put({ type: "COMMENTS/END_LOADING" })
+    try {
+        yield put({ type: "COMMENTS/BEGIN_LOADING" })
+        const result = yield call(commentsGet)
+        yield put({ type: "COMMENTS/SET", payload: result })
+        yield put({ type: "COMMENTS/END_LOADING" })
+    } catch (error) {
+        yield put({ type: "ERROR/SHOW_ALERT", 
+            payload:"Что-то пошло не так, попробуйте обновить страницу" })
+        yield put({ type: "COMMENTS/END_LOADING" })
+    }
+    
 }
 
 export function* watchCommentSaga() {

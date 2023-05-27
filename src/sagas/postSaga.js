@@ -9,10 +9,16 @@ async function postsGet() {
 }
 
 export function* workerSaga() {
-    yield put({ type: "POSTS/START_LOADING" })
-    const result = yield call(postsGet)
-    yield put({ type: "POSTS/SET", payload: result })
-    yield put({ type: "POSTS/END_LOADING" })
+    try {
+        yield put({ type: "POSTS/START_LOADING" })
+        const result = yield call(postsGet)
+        yield put({ type: "POSTS/SET", payload: result })
+        yield put({ type: "POSTS/END_LOADING" })
+    } catch (error) {
+        yield put({ type: "ERROR/SHOW_ALERT", 
+            payload:"Что-то пошло не так, попробуйте обновить страницу" })
+        yield put({ type: "POSTS/END_LOADING" })
+    }
 }
 
 export function* watchPostSaga() {
