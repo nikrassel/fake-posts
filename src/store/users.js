@@ -5,19 +5,25 @@ const initialState = {
 
 export default function usersReducer(state = initialState, action) {
     switch (action.type) {
-        case "SET_USERS": {
+        case "USERS/SET": {
             return {
                 ...state,
                 users: [...action.payload]
             }
         }
-        case "BEGIN_LOADING": {
+        case "USERS/CLEAN": {
+            return {
+                ...state,
+                users: null
+            }
+        }
+        case "USERS/BEGIN_LOADING": {
             return {
                 ...state,
                 isLoading: true
             }
         }
-        case "END_LOADING": {
+        case "USERS/END_LOADING": {
             return {
                 ...state,
                 isLoading: false

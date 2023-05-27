@@ -31,7 +31,7 @@ const UpperNavBar = () => {
                 id="offcanvasExample"
                 aria-labelledby="offcanvasExampleLabel"
             >
-                <div className="offcanvas-header">
+                <div className="offcanvas-header justify-content-end">
                     <button
                         type="button"
                         className="btn-close mb-2"

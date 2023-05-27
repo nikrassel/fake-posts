@@ -9,10 +9,10 @@ async function usersGet() {
 }
 
 export function* workerSaga() {
-    yield put({ type: "BEGIN_LOADING" })
+    yield put({ type: "USERS/BEGIN_LOADING" })
     const result = yield call(usersGet)
-    yield put({ type: "SET_USERS", payload: result })
-    yield put({ type: "END_LOADING" })
+    yield put({ type: "USERS/SET", payload: result })
+    yield put({ type: "USERS/END_LOADING" })
 }
 
 export function* watchUserSaga() {

@@ -1,21 +1,20 @@
 import React from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
 import Loader from "../ui/loader"
 import UserPosts from "./userPage/userPosts"
 import UserCard from "./userPage/userCard"
 
 const UserInfo = () => {
-    const dispatch = useDispatch()
     const navigate = useNavigate()
     const { id } = useParams()
     const users = useSelector((state) => state.users.users)
-    if (!users) {
-        dispatch({ type: "LOAD_USERS" })
-    }
     const loadingStatus = useSelector((state) => state.users.isLoading)
     function handleBack() {
         navigate("/")
+    }
+    if (loadingStatus) {
+        return <Loader />
     }
     if (users && id) {
         const currentUser = users.find((user) => user.id === Number(id))
@@ -35,10 +34,6 @@ const UserInfo = () => {
             </>
         )
     }
-    if (loadingStatus) {
-        return <Loader />
-    }
-    
 }
 
 export default UserInfo

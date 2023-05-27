@@ -2,17 +2,24 @@ import React from "react"
 import { useDispatch } from "react-redux"
 import CommentsList from "../comments/commentsList"
 import { useNavigate } from "react-router-dom"
+import localStorageService from "../../../services/localStorage.service"
 
 const PostCard = ({ post }) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const id = String(post.id)
-    function handleShowComments() {
+    function handleShowComments(target) {
+        if(target.target.className.includes("collapsed")) {
+            return
+        }
+        localStorageService.setPostId(id)
         dispatch({ type: "LOAD_COMMENTS" })
     }
     function handleToUserPage(target) {
-        const id = target.target.id
-        navigate(`/userinfo/${id}`)
+        const userId = target.target.id
+        localStorageService.setUserId(userId)
+        dispatch({ type: "LOAD_USERS" })
+        navigate(`/userinfo/${userId}`)
     }
     return (
         <div className="card m-3">

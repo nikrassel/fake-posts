@@ -9,10 +9,10 @@ async function commentsGet() {
 }
 
 export function* workerSaga() {
-    yield put({ type: "BEGIN_LOADING" })
+    yield put({ type: "COMMENTS/BEGIN_LOADING" })
     const result = yield call(commentsGet)
-    yield put({ type: "SET_COMMENTS", payload: result })
-    yield put({ type: "END_LOADING" })
+    yield put({ type: "COMMENTS/SET", payload: result })
+    yield put({ type: "COMMENTS/END_LOADING" })
 }
 
 export function* watchCommentSaga() {

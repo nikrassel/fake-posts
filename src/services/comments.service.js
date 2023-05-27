@@ -1,10 +1,12 @@
 import httpService from "./http.service"
+import localStorageService from "./localStorage.service"
 
-const commentsEndpoint = "comments/"
+// const postId = localStorageService.getPostId()
+const commentsEndpoint = `comments?postId=`
 
 const commentsService = {
     get: async () => {
-        const { data } = await httpService.get(commentsEndpoint)
+        const { data } = await httpService.get(commentsEndpoint + localStorageService.getPostId())
         return data
     }
 }

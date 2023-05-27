@@ -5,19 +5,19 @@ const initialState = {
 
 export default function postsReducer(state = initialState, action) {
     switch (action.type) {
-        case "SET_POSTS": {
+        case "POSTS/SET": {
             return {
                 ...state,
                 posts: [...action.payload]
             }
         }
-        case "BEGIN_LOADING": {
+        case "POSTS/START_LOADING": {
             return {
                 ...state,
                 isLoading: true
             }
         }
-        case "END_LOADING": {
+        case "POSTS/END_LOADING": {
             return {
                 ...state,
                 isLoading: false

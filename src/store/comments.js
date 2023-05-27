@@ -1,23 +1,31 @@
 const initialState = {
-    comments: null,
+    comments: [],
     isLoading: false
 }
 
 export default function commentsReducer(state = initialState, action) {
     switch (action.type) {
-        case "SET_COMMENTS": {
+        case "COMMENTS/SET": {
+            if (state.comments.length) {
+                if (state.comments.find((elem) => elem.id === action.payload[0].id)) {
+                    return state
+                }
+            }
             return {
                 ...state,
-                comments: [...action.payload]
+                comments: [
+                    ...state.comments,
+                    ...action.payload
+                ]
             }
         }
-        case "BEGIN_LOADING": {
+        case "COMMENTS/BEGIN_LOADING": {
             return {
                 ...state,
                 isLoading: true
             }
         }
-        case "END_LOADING": {
+        case "COMMENTS/END_LOADING": {
             return {
                 ...state,
                 isLoading: false

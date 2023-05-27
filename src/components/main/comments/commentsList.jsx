@@ -5,7 +5,6 @@ import Loader from "../../ui/loader"
 const CommentsList = ({ postId }) => {
     const comments = useSelector((state) => state.comments.comments)
     const loadingStatus = useSelector((state) => state.comments.isLoading)
-
     if (loadingStatus) {
         return <Loader />
     }
