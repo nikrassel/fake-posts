@@ -15,7 +15,7 @@ const About = () => {
                     </div>
                     <div className="col-md-8">
                         {Object.values(additionalInfo).map((elem) => (
-                            <InfoCard info={elem} />
+                            <InfoCard info={elem} key={elem.key} />
                         ))}
                     </div>
                 </div>
