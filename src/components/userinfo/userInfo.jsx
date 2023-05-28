@@ -1,5 +1,5 @@
 import React from "react"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
 import Loader from "../ui/loader"
 import UserPosts from "./userPage/userPosts"
@@ -7,11 +7,15 @@ import UserCard from "./userPage/userCard"
 import Alert from "../ui/alert"
 
 const UserInfo = () => {
+    const dispatch = useDispatch()
     const alert = useSelector((state) => state.errors.alert)
     const navigate = useNavigate()
     const { id } = useParams()
     const users = useSelector((state) => state.users.users)
     const loadingStatus = useSelector((state) => state.users.isLoading)
+    if (!users && !loadingStatus) {
+        dispatch({ type: "LOAD_USERS" })
+    }
     function handleBack() {
         navigate("/")
     }
