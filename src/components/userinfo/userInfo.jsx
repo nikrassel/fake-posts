@@ -12,6 +12,7 @@ const UserInfo = () => {
     const navigate = useNavigate()
     const { id } = useParams()
     const users = useSelector((state) => state.users.users)
+    const posts = useSelector((state) => state.posts.posts)
     const loadingStatus = useSelector((state) => state.users.isLoading)
     if (!users && !loadingStatus) {
         dispatch({ type: "LOAD_USERS" })
@@ -22,7 +23,7 @@ const UserInfo = () => {
     if (loadingStatus) {
         return <Loader />
     }
-    if (users && id) {
+    if (users && id && posts) {
         const currentUser = users.find((user) => user.id === Number(id))
         return (
             <>
@@ -36,7 +37,7 @@ const UserInfo = () => {
                             <UserCard user={currentUser} />
                         </div>
                         <div className="col-md-8">
-                            <UserPosts userId={currentUser.id} />
+                            <UserPosts userId={currentUser.id} posts={posts} />
                         </div>
                     </div>
                 </div>
